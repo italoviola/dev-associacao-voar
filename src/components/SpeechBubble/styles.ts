@@ -7,23 +7,12 @@ export const Banner = styled.div`
   width: 100%;
   max-width: 949px;
   margin: 0 auto;
+  padding: 24px;
 `;
 
-export const Container = styled(Grid).attrs({
-  container: true,
-})`
+export const Container = styled(Grid)`
   position: relative;
   align-items: center;
-  width: 100%;
-  padding: 24px;
-  margin: 0 auto;
-  gap: 16px;
-
-  ${breakpoints.desktop} {
-    flex-wrap: nowrap !important;
-    padding: 24px 40px;
-    gap: 45px;
-  }
 
   ::after {
     content: '';
@@ -32,7 +21,7 @@ export const Container = styled(Grid).attrs({
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, 50%) rotate(45deg);
+    transform: translate(-50%, 100%) rotate(45deg);
     background-color: ${colors.green};
   }
 `;
@@ -42,7 +31,11 @@ export const ImageGrid = styled(Grid)`
 `;
 
 export const Image = styled.img`
-  width: 207px;
+  width: 128px;
+
+  ${breakpoints.desktop} {
+    width: 207px;
+  }
 `;
 
 export const TitleWrapper = styled.div`

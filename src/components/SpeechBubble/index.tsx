@@ -26,11 +26,11 @@ const SpeechBubble: React.FC = () => {
 
   return (
     <Banner>
-      <Container>
-        <ImageGrid xs={12} md={3}>
+      <Container container spacing={{ xs: 2, md: 4 }}>
+        <ImageGrid item xs={12} md={3}>
           <Image src="https://placekitten.com/207/161" />
         </ImageGrid>
-        <Grid xs={12} md={9}>
+        <Grid item xs={12} md={9}>
           <TitleWrapper>
             <Title type="h3" title={title} color={colors.black} />
           </TitleWrapper>
