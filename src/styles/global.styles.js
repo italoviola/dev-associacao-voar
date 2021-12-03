@@ -6,6 +6,7 @@ export const colors = {
   blackDark: '#000',
   black: '#1f1f1f',
   white: '#fff',
+  grayShadow: '#041e4229',
   grayLight: '#f5f5f5',
   grayMedium: '#c4c4c4',
   grayDark: '#808080',

@@ -1,10 +1,10 @@
 import './App.css';
-import SpeechBubble from './components/SpeechBubble';
+import Home from './pages/Home';
 
 function App() {
   return (
     <div className="App">
-      <SpeechBubble />
+      <Home />
     </div>
   );
 }
