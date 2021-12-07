@@ -13,9 +13,17 @@ export const ContentGrid = styled(Grid)`
 `;
 
 export const CTAText = styled(Grid)`
-  text-align: right;
+  text-align: center;
+
+  ${breakpoints.desktop} {
+    text-align: right;
+  }
 `;
 
 export const CTAButton = styled(Grid)`
-  text-align: left;
+  text-align: center;
+
+  ${breakpoints.desktop} {
+    text-align: left;
+  }
 `;
