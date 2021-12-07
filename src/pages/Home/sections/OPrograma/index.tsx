@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from '@mui/material';
 import Title from '../../../../components/Title';
 import Text from '../../../../components/Text';
+import Button from '../../../../components/Button';
 import { colors } from '../../../../styles/global.styles.js';
 // import { CardProps } from './interface';
 
@@ -11,7 +12,7 @@ import InfoCardBanner from '../../../../components/InfoCardBanner';
 
 import image from '../../../../assets/card-2.png';
 
-import { Container, ContentGrid, CTAText, CTAButton } from './styles';
+import { Container, ContentGrid, CTAText, CTAButton, StyledButton } from './styles';
 
 const descs = {
   title: 'Já pensou em decolar na carreira que você sempre sonhou?',
@@ -97,7 +98,9 @@ const OPrograma: React.FC = ({ children }) => {
             <Text>{cta.text}</Text>
           </CTAText>
           <CTAButton xs={12} md={6} item>
-            {cta.button}
+            <StyledButton theme="primary">
+              {cta.button}
+            </StyledButton>
           </CTAButton>
         </ContentGrid>
       </Container>
