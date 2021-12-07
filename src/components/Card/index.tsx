@@ -10,7 +10,7 @@ import { Container, ImageGrid, Image, TitleWrapper, TextWrapper } from './styles
 const Card: React.FC<CardProps> = ({ children, image, title }) => {
 
   return (
-    <Container container spacing={2}>
+    <Container container>
       <ImageGrid item xs={12}>
         <Image src={image} />
       </ImageGrid>

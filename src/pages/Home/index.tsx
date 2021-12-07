@@ -20,11 +20,7 @@ const text = (
 
 // import { Container, ImageGrid, Image, TitleWrapper, TextWrapper } from './styles';
 const Home: React.FC = ({ children }) => {
-  return (
-    <div>
-      <OPrograma />
-    </div>
-  );
+  return <OPrograma />;
 };
 
 export default Home;

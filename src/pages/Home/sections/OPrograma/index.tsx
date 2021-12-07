@@ -10,9 +10,15 @@ import SpeechBubble from '../../../../components/SpeechBubble';
 import InfoCardBanner from '../../../../components/InfoCardBanner';
 
 import image from '../../../../assets/card-2.png';
+
+import { Container, ContentGrid, CTAText, CTAButton } from './styles';
+
 const descs = {
   title: 'Já pensou em decolar na carreira que você sempre sonhou?',
-  text: (<p>Acreditamos que as pessoas podem chegar aonde elas quiserem e que não é possível mensurar o t</p>)
+  text: (
+    <p>Acreditamos que as pessoas podem chegar aonde elas quiserem e que não é possível mensurar o tamanho de um sonho.<br/>
+    Requisitos para se candidatar a uma bolsa de estudo: ensino médio completo e comprovação socioeconômica.</p>
+  )
 };
 
 const cards = [
@@ -54,24 +60,48 @@ const cards = [
   }
 ];
 
-// import { Container, ImageGrid, Image, TitleWrapper, TextWrapper } from './styles';
+const cta = {
+  text: (<p>Quer entender mais sobre o processo?</p>),
+  button: 'Ver as etapas de seleção',
+};
+
 const OPrograma: React.FC = ({ children }) => {
   return (
-    <div>
-      <InfoCardBanner />
-      <Title type="h2" title={descs.title} color={colors.purple} />
-      <Text>{descs.text}</Text>
-      <div>
-        {cards.map((item: any) => {
-          return (
-            <Card image={item.image} title={item.title}>
-              {item.text}
-            </Card>
-          )
-        })}
-      </div>
-      <SpeechBubble />
-    </div>
+    <>
+      <Container>
+        <ContentGrid container spacing={2}>
+          <Grid item>
+            <Title type="h2" title={descs.title} color={colors.purple} />
+          </Grid>
+          <Grid item>
+            <Text>{descs.text}</Text>
+          </Grid>
+        </ContentGrid>
+      </Container>
+      <Container>
+        <ContentGrid container spacing={3}>
+          {cards.map((item: any) => {
+            return (
+              <Grid item>
+                <Card image={item.image} title={item.title}>
+                  {item.text}
+                </Card>
+              </Grid>
+            )
+          })}
+        </ContentGrid>
+      </Container>
+      <Container>
+        <ContentGrid container spacing={2}>
+          <CTAText xs={12} md={6} item>
+            <Text>{cta.text}</Text>
+          </CTAText>
+          <CTAButton xs={12} md={6} item>
+            {cta.button}
+          </CTAButton>
+        </ContentGrid>
+      </Container>
+    </>
   );
 };
 

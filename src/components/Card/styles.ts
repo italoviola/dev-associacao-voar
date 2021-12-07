@@ -10,10 +10,13 @@ export const Container = styled(Grid)`
 `;
 
 export const ImageGrid = styled(Grid)`
+  border-radius: 8px 8px 0 0;
   text-align: center;
 `;
 
 export const Image = styled.img`
+  margin-bottom: 24px;
+  border-radius: 8px 8px 0 0;
   width: 100%;
 `;
 
