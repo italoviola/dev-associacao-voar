@@ -6,12 +6,16 @@ import { colors, breakpoints } from '../../../../styles/global.styles.js';
 export const Container = styled.div`
   max-width: 1148px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 30px 24px 0;
 `;
 
 export const ContentGrid = styled(Grid)`
   align-items: center;
   justify-content: center;
+`;
+
+export const TitleGrid = styled(Grid)`
+  max-width: 570px;
 `;
 
 export const CTAText = styled(Grid)`
@@ -32,6 +36,7 @@ export const CTAButton = styled(Grid)`
 
 export const StyledButton = styled(Button)`
   margin: 0 auto;
+  padding: 0 80px;
 
   ${breakpoints.desktop} {
     margin: 0;

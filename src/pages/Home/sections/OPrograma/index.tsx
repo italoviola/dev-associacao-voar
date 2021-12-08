@@ -12,7 +12,7 @@ import InfoCardBanner from '../../../../components/InfoCardBanner';
 
 import image from '../../../../assets/card-2.png';
 
-import { Container, ContentGrid, CTAText, CTAButton, StyledButton } from './styles';
+import { Container, ContentGrid, TitleGrid, CTAText, CTAButton, StyledButton } from './styles';
 
 const descs = {
   title: 'Já pensou em decolar na carreira que você sempre sonhou?',
@@ -62,7 +62,7 @@ const cards = [
 ];
 
 const cta = {
-  text: (<p>Quer entender mais sobre o processo?</p>),
+  text: (<p><strong>Quer entender mais sobre o processo?</strong></p>),
   button: 'Ver as etapas de seleção',
 };
 
@@ -71,9 +71,9 @@ const OPrograma: React.FC = ({ children }) => {
     <>
       <Container>
         <ContentGrid container spacing={2}>
-          <Grid item>
+          <TitleGrid item>
             <Title type="h2" title={descs.title} color={colors.purple} />
-          </Grid>
+          </TitleGrid>
           <Grid item>
             <Text>{descs.text}</Text>
           </Grid>
@@ -95,7 +95,7 @@ const OPrograma: React.FC = ({ children }) => {
       <Container>
         <ContentGrid container spacing={2}>
           <CTAText xs={12} md={6} item>
-            <Text>{cta.text}</Text>
+            <Text size="20">{cta.text}</Text>
           </CTAText>
           <CTAButton xs={12} md={6} item>
             <StyledButton theme="primary">

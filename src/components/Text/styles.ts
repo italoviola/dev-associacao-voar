@@ -12,3 +12,8 @@ export const Text = styled.div`
     font-size: 16px;
   }
 `;
+
+export const Text20 = styled(Text)`
+  font-size: 20px;
+  line-height: 25px;
+`;
