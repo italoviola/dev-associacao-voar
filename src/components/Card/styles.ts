@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Grid } from '@mui/material';
-import { colors } from '../../styles/global.styles.js';
+import { breakpoints, colors } from '../../styles/global.styles.js';
 
 export const Container = styled(Grid)`
   background-color: ${colors.white};

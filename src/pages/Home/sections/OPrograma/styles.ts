@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Grid } from '@mui/material';
+import { Carousel } from 'react-responsive-carousel';
+
 import Button from '../../../../components/Button';
 import { colors, breakpoints } from '../../../../styles/global.styles.js';
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 import Title from '../../../../components/Title';
 import Text from '../../../../components/Text';
@@ -9,6 +9,7 @@ import { colors } from '../../../../styles/global.styles.js';
 import Card from '../../../../components/Card';
 import SpeechBubble from '../../../../components/SpeechBubble';
 import InfoCardBanner from '../../../../components/InfoCardBanner';
+import { Carousel } from 'react-responsive-carousel';
 
 import image from '../../../../assets/card-2.png';
 
@@ -66,7 +67,54 @@ const cta = {
   button: 'Ver as etapas de seleção',
 };
 
+
 const OPrograma: React.FC = ({ children }) => {
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const breakpoint = 900;
+  React.useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+
+    // subscribe to window resize event "onComponentDidMount"
+    window.addEventListener("resize", handleResizeWindow);
+    return () => {
+      // unsubscribe "onComponentDestroy"
+      window.removeEventListener("resize", handleResizeWindow);
+    };
+  }, []);
+  const renderCard: any = () => {
+    if (width < breakpoint) {
+      return (
+        <Carousel 
+          showArrows={false}
+          showIndicators={false}
+          showStatus={false}
+          showThumbs={false}
+        >
+          {
+            cards.map((item: any) => {
+              return (
+                <Grid item>
+                  <Card image={item.image} title={item.title}>
+                    {item.text}
+                  </Card>
+                </Grid>
+              )
+            })
+          }
+        </Carousel>
+      )
+    } else {
+      return cards.map((item: any) => {
+        return (
+          <Grid item>
+            <Card image={item.image} title={item.title}>
+              {item.text}
+            </Card>
+          </Grid>
+        )
+      })
+    }
+  }
   return (
     <>
       <Container>
@@ -81,15 +129,7 @@ const OPrograma: React.FC = ({ children }) => {
       </Container>
       <Container>
         <ContentGrid container spacing={3}>
-          {cards.map((item: any) => {
-            return (
-              <Grid item>
-                <Card image={item.image} title={item.title}>
-                  {item.text}
-                </Card>
-              </Grid>
-            )
-          })}
+          {renderCard()}
         </ContentGrid>
       </Container>
       <Container>
