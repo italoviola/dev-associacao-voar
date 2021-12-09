@@ -2,11 +2,22 @@ import styled from 'styled-components';
 import { Grid } from '@mui/material';
 import { breakpoints, colors } from '../../styles/global.styles.js';
 
-export const Container = styled(Grid)`
+export const Container = styled.div`
+  max-width: 327px;
+  padding: 8px 8px 16px;
+  margin: 0 auto;
+
+  ${breakpoints.desktop} {
+    max-width: 364px;
+    padding: 0;
+    margin: 0;
+  }
+`;
+
+export const Content = styled(Grid)`
   background-color: ${colors.white};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px ${colors.grayShadow};
-  max-width: 364px;
 `;
 
 export const ImageGrid = styled(Grid)`

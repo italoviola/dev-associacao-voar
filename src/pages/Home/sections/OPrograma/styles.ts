@@ -11,6 +11,16 @@ export const Container = styled.div`
   padding: 30px 24px 0;
 `;
 
+export const ContainerCarousel = styled.div`
+  max-width: 327px;
+  margin: 0 auto;
+  padding: 30px 24px 0;
+
+  ${breakpoints.desktop} {
+    max-width: 364px;
+  }
+`;
+
 export const ContentGrid = styled(Grid)`
   align-items: center;
   justify-content: center;

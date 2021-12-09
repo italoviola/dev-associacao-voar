@@ -9,11 +9,14 @@ import { colors } from '../../../../styles/global.styles.js';
 import Card from '../../../../components/Card';
 import SpeechBubble from '../../../../components/SpeechBubble';
 import InfoCardBanner from '../../../../components/InfoCardBanner';
-import { Carousel } from 'react-responsive-carousel';
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import image from '../../../../assets/card-2.png';
 
-import { Container, ContentGrid, TitleGrid, CTAText, CTAButton, StyledButton } from './styles';
+import { Container, ContainerCarousel, ContentGrid, TitleGrid, CTAText, CTAButton, StyledButton } from './styles';
 
 const descs = {
   title: 'Já pensou em decolar na carreira que você sempre sonhou?',
@@ -67,6 +70,14 @@ const cta = {
   button: 'Ver as etapas de seleção',
 };
 
+const settings = {
+  arrows: false,
+  dots: false,
+  infinite: false,
+  centerMode: true,
+  slidesToShow: 1,
+  centerPadding: '24px',
+}; 
 
 const OPrograma: React.FC = ({ children }) => {
   const [width, setWidth] = React.useState(window.innerWidth);
@@ -84,35 +95,40 @@ const OPrograma: React.FC = ({ children }) => {
   const renderCard: any = () => {
     if (width < breakpoint) {
       return (
-        <Carousel 
-          showArrows={false}
-          showIndicators={false}
-          showStatus={false}
-          showThumbs={false}
-        >
-          {
-            cards.map((item: any) => {
-              return (
-                <Grid item>
-                  <Card image={item.image} title={item.title}>
-                    {item.text}
-                  </Card>
-                </Grid>
-              )
-            })
-          }
-        </Carousel>
+        <ContainerCarousel>
+          <Slider {...settings}>
+            {
+              cards.map((item: any) => {
+                return (
+                  <Grid item>
+                    <Card image={item.image} title={item.title}>
+                      {item.text}
+                    </Card>
+                  </Grid>
+                )
+              })
+            }
+          </Slider>
+        </ContainerCarousel>
       )
     } else {
-      return cards.map((item: any) => {
-        return (
-          <Grid item>
-            <Card image={item.image} title={item.title}>
-              {item.text}
-            </Card>
-          </Grid>
-        )
-      })
+      return (
+        <Container>
+          <ContentGrid container spacing={2}>
+            {
+              cards.map((item: any) => {
+                return (
+                  <Grid item>
+                    <Card image={item.image} title={item.title}>
+                      {item.text}
+                    </Card>
+                  </Grid>
+                )
+              })
+            }
+          </ContentGrid>
+        </Container>
+      )
     }
   }
   return (
@@ -127,11 +143,7 @@ const OPrograma: React.FC = ({ children }) => {
           </Grid>
         </ContentGrid>
       </Container>
-      <Container>
-        <ContentGrid container spacing={3}>
-          {renderCard()}
-        </ContentGrid>
-      </Container>
+      {renderCard()}
       <Container>
         <ContentGrid container spacing={2}>
           <CTAText xs={12} md={6} item>
