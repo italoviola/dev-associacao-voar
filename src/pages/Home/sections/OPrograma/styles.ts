@@ -1,9 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Grid } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
 
 import Button from '../../../../components/Button';
 import { colors, breakpoints } from '../../../../styles/global.styles.js';
+
+interface AnimateProps {
+  animate: boolean;
+}
 
 export const Container = styled.div`
   max-width: 1148px;
@@ -21,9 +25,20 @@ export const ContainerCarousel = styled.div`
   }
 `;
 
-export const ContentGrid = styled(Grid)`
+export const ContentGrid = styled(Grid)<AnimateProps>`
   align-items: center;
   justify-content: center;
+
+  // Animate
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1.5s, transform 1.5s;
+  ${(props) =>
+    props.animate &&
+    css`
+      opacity: 1;
+      transform: scale(1);
+    `}
 `;
 
 export const TitleGrid = styled(Grid)`
@@ -32,7 +47,6 @@ export const TitleGrid = styled(Grid)`
 
 export const CTAText = styled(Grid)`
   text-align: center;
-
   ${breakpoints.desktop} {
     text-align: right;
   }

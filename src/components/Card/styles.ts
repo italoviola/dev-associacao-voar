@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Grid } from '@mui/material';
 import { breakpoints, colors } from '../../styles/global.styles.js';
+
+interface AnimateProps {
+  animate: boolean;
+}
 
 export const Container = styled.div`
   max-width: 327px;
@@ -14,7 +18,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled(Grid)`
+export const Content = styled(Grid)<AnimateProps>`
   background-color: ${colors.white};
   border-radius: 8px;
   box-shadow: 0px 4px 16px 0px ${colors.grayShadow};

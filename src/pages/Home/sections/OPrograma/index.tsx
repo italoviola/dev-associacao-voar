@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef } from 'react';
 import { Grid } from '@mui/material';
 import Title from '../../../../components/Title';
 import Text from '../../../../components/Text';
@@ -13,6 +13,8 @@ import InfoCardBanner from '../../../../components/InfoCardBanner';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import { useObserver } from '../../../../hooks/useObserver';
 
 import image from '../../../../assets/card-2.png';
 
@@ -31,36 +33,30 @@ const cards = [
     image: image,
     title: 'Piloto',
     text: (
-      <div>
-        <p>
-          Se você tem paixão pela máquina e seu coração bate mais forte com o barulho dos motores,
-          esse é o caminho para você se tornar um mecânico de aeronaves.
-        </p>
-      </div>
+      <p>
+        Se você tem paixão pela máquina e seu coração bate mais forte com o barulho dos motores,
+        esse é o caminho para você se tornar um mecânico de aeronaves.
+      </p>
     )
   },
   {
     image: image,
     title: 'Piloto',
     text: (
-      <div>
-        <p>
-          Se você tem paixão pela máquina e seu coração bate mais forte com o barulho dos motores,
-          esse é o caminho para você se tornar um mecânico de aeronaves.
-        </p>
-      </div>
+      <p>
+        Se você tem paixão pela máquina e seu coração bate mais forte com o barulho dos motores,
+        esse é o caminho para você se tornar um mecânico de aeronaves.
+      </p>
     )
   },
   {
     image: image,
     title: 'Piloto',
     text: (
-      <div>
-        <p>
-          Se você tem paixão pela máquina e seu coração bate mais forte com o barulho dos motores,
-          esse é o caminho para você se tornar um mecânico de aeronaves.
-        </p>
-      </div>
+      <p>
+        Se você tem paixão pela máquina e seu coração bate mais forte com o barulho dos motores,
+        esse é o caminho para você se tornar um mecânico de aeronaves.
+      </p>
     )
   }
 ];
@@ -82,16 +78,18 @@ const settings = {
 const OPrograma: React.FC = ({ children }) => {
   const [width, setWidth] = React.useState(window.innerWidth);
   const breakpoint = 900;
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isVisible = useObserver(containerRef);
+
   React.useEffect(() => {
     const handleResizeWindow = () => setWidth(window.innerWidth);
-
-    // subscribe to window resize event "onComponentDidMount"
     window.addEventListener("resize", handleResizeWindow);
     return () => {
-      // unsubscribe "onComponentDestroy"
       window.removeEventListener("resize", handleResizeWindow);
     };
   }, []);
+
   const renderCard: any = () => {
     if (width < breakpoint) {
       return (
@@ -114,7 +112,7 @@ const OPrograma: React.FC = ({ children }) => {
     } else {
       return (
         <Container>
-          <ContentGrid container spacing={2}>
+          <ContentGrid container spacing={2} animate={isVisible}>
             {
               cards.map((item: any) => {
                 return (
@@ -133,8 +131,8 @@ const OPrograma: React.FC = ({ children }) => {
   }
   return (
     <>
-      <Container>
-        <ContentGrid container spacing={2}>
+      <Container ref={containerRef}>
+        <ContentGrid container spacing={2} animate={isVisible}>
           <TitleGrid item>
             <Title type="h2" title={descs.title} color={colors.purple} />
           </TitleGrid>
@@ -145,7 +143,7 @@ const OPrograma: React.FC = ({ children }) => {
       </Container>
       {renderCard()}
       <Container>
-        <ContentGrid container spacing={2}>
+        <ContentGrid container spacing={2} animate={isVisible}>
           <CTAText xs={12} md={6} item>
             <Text size="20">{cta.text}</Text>
           </CTAText>
