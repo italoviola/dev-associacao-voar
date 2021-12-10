@@ -15,10 +15,21 @@ export const Container = styled.div`
   padding: 30px 24px 0;
 `;
 
-export const ContainerCarousel = styled.div`
+export const ContainerCarousel = styled.div<AnimateProps>`
   max-width: 327px;
   margin: 0 auto;
   padding: 30px 24px 0;
+
+  // Animate
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1.5s, transform 1.5s;
+  ${(props) =>
+    props.animate &&
+    css`
+      opacity: 1;
+      transform: scale(1);
+    `}
 
   ${breakpoints.desktop} {
     max-width: 364px;

@@ -93,7 +93,7 @@ const OPrograma: React.FC = ({ children }) => {
   const renderCard: any = () => {
     if (width < breakpoint) {
       return (
-        <ContainerCarousel>
+        <ContainerCarousel animate={isVisible}>
           <Slider {...settings}>
             {
               cards.map((item: any) => {
